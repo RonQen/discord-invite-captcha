@@ -7,12 +7,17 @@ import os
 app = Flask(__name__)
 load_dotenv(verbose=True)
 
+print("started")
+
+
 @app.route("/")
 def index():
+    print("/")
     return render_template('index.html', key=os.getenv('SITE_KEY'))
 
 @app.route("/invite", methods=['POST'])
 def invite():
+    print("invite requested")
     token = request.form['token']
     data = {'secret': os.getenv('SECRET_KEY'), 'response': token}
     resp = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
