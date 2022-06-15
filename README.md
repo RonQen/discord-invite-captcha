@@ -13,7 +13,7 @@ To run this bot you need the following packages installed on your system:
 
  - Install all python package dependancies (in a virtualenv by preference) with `pip install -r requirements.txt`
  - Add your discord keys and other configuration to the `.env` file (see .env.example to see the variable names to use)
- - Run `FLASK_APP=server.py flask run` to start the bot as the active process
+ - follow: https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04
 
 ## Using Docker
 

@@ -9,6 +9,9 @@ load_dotenv(verbose=True)
 
 print("started")
 
+@app.route("/1")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
 
 @app.route("/")
 def index():
@@ -24,16 +27,16 @@ def invite():
     respdata = resp.json()
     if respdata['success']:
         print('Granting invite', respdata)
-        
+
         discordtoken = os.getenv('DISCORD_TOKEN')
 
         resp = requests.post(
-            'https://discordapp.com/api/channels/%s/invites' % os.getenv('CHANNEL_ID'), 
+            'https://discordapp.com/api/channels/%s/invites' % os.getenv('CHANNEL_ID'),
             headers={'Authorization': 'Bot %s' % discordtoken},
             json={'max_uses': 1, 'unique': True, 'expires': 3600})
 
         inv = resp.json()
-        
+
         if 'code' in inv:
             return json.dumps({'success': True, 'url': inv['code']})
         else:
@@ -43,3 +46,5 @@ def invite():
         print('Not granting invite!', respdata)
         return json.dumps({'success': False})
 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')

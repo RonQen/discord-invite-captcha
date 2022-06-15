@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,400" rel="stylesheet" />
     <style type="text/css">
         html { height: 100%; }
-        body { margin: 0; padding: 0; background: linear-gradient(210deg,#22b1ab,#18817c) no-repeat; color: white; font-family: Nunito Sans,sans-serif !important; box-sizing: border-box;}
+        body { margin: 0; padding: 0; background-color:#222129; color: white; font-family: Nunito Sans,sans-serif !important; box-sizing: border-box;}
         .container {
             box-sizing: border-box;
             margin: 50px auto;
@@ -22,16 +22,17 @@
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <img src="static/logo.png" alt="Swidge" />
-        <h1>Discord Invite</h1>
-        <form action="/invite" method="POST">
-            <div class="g-recaptcha" style="display: inline-block;" id="captcha" data-sitekey="{{key}}" data-callback=onSubmit></div>
-        </form>
-    </div>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
+<body style="background-color:#222129;">
+<div class="container">
+    <img src="static/logo.png" alt="Swidge" style="height: 100px;" />
+    <h1>Discord Invite</h1>
+    <p>Please make sure you never share your private key or ledger recovery phrase with anyone.<br>The team won't ever DM you first.</p>
+    <form action="/invite" method="POST">
+        <div class="g-recaptcha" style="display: inline-block;" id="captcha" data-sitekey="{{key}}" data-callback=onSubmit></div>
+    </form>
+</div>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
 
     function onSubmit(token) {
         var form = new FormData();
